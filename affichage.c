@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include "affichage.h"
-// #include "comparaison.h"
 
 // affiche le tableau
 void printTab(int *tab, int tailleTab)

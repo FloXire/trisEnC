@@ -21,11 +21,6 @@ int main(int argc, char const *argv[]) {
     int tab[tailleTab];
     remplirTab(tab, tailleTab);
 
-    /*
-    int (*fctComp)(int, int);
-    fctComp = menu();
-    */
-
     if (tailleTab < 200000) printTab(tab, tailleTab);
     printTrie(tab, tailleTab);
 

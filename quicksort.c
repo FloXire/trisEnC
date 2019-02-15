@@ -1,5 +1,4 @@
 #include "quicksort.h"
-//#include "comparaison.h"
 
 void switche(int *tab, int ind1, int ind2)
 {
@@ -54,12 +53,3 @@ int quickSort(int *tab, int ind1, int ind2)
     // Appel récursif sur la partie droite du tableau
     quickSort(tab, i, ind2);
 }
-
-/*
-int quickSort(int *tab, int ind1, int ind2, int (*fctComp)(int, int))
-{
-    (*fctComp)(ind1, ind2);
-
-    return 0;
-}
-*/
