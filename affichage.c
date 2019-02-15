@@ -23,10 +23,7 @@ int verifTabTrie(int *tab, int tailleTab, int (*fctComp)(int, int))
 
 void printTrie(int *tab, int tailleTab, int (*fctComp)(int, int))
 {
-    if (verifTabTrie(tab, tailleTab, fctComp) != 1)
-    {
-        printf("Tableau non trié\n\n");
-    }
+    if (verifTabTrie(tab, tailleTab, fctComp) != 1) printf("Tableau non trié\n\n");
     else printf("Tableau trié\n\n");
 }
 

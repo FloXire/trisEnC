@@ -1,4 +1,4 @@
-#include "quicksort.h"
+#include "tris.h"
 #include "comparaison.h"
 
 void switche(int *tab, int ind1, int ind2)
@@ -56,12 +56,3 @@ int quickSort(int *tab, int ind1, int ind2, int (*fctComp)(int, int))
 
     return 0;
 }
-
-/*
-int quickSort(int *tab, int ind1, int ind2, int (*fctComp)(int, int))
-{
-    (*fctComp)(ind1, ind2);
-
-    return 0;
-}
-*/

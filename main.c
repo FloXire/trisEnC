@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "affichage.h"
-#include "quicksort.h"
+#include "tris.h"
 
 
 // initialise le tableau avec des valeurs aléatoires
@@ -18,7 +18,7 @@ void remplirTab(int *tab, int tailleTab)
 
 int main(int argc, char const *argv[]) {
 
-    int tailleTab = 10;
+    int tailleTab = 1000000;
     int tab[tailleTab];
     remplirTab(tab, tailleTab);
 
