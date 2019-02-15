@@ -28,7 +28,7 @@ int quickSort(int *tab, int ind1, int ind2, int (*fctComp)(int, int))
         /* On incrémente i de 1 si l'élément à l'indice i est
         plus petit que le pivot. De la même façon on décrémente j
         si l'élément à l'indice j est plus grand que le pivot */
-        if (fctComp(tab[i],pivot) || fctComp(pivot, tab[j]))
+        if (fctComp(tab[i], pivot) || fctComp(pivot, tab[j]))
         {
             if (fctComp(tab[i], pivot)) i++;
             if (fctComp(pivot, tab[j])) j--;
@@ -43,7 +43,7 @@ int quickSort(int *tab, int ind1, int ind2, int (*fctComp)(int, int))
             j--;
         }
     } // à partir d'ici i == j
-    if (fctComp(pivot,tab[j]))
+    if (fctComp(tab[j], pivot))
     {
         switche(tab, ind1, j);
     }

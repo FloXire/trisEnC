@@ -9,7 +9,7 @@ all: $(EXEC) clean
 $(EXEC): $(OBJ)
 	$(CC) -o $@ $^
 
-main.o: affichage.h quicksort.h
+main.o: affichage.h quicksort.h comparaison.h
 
 %.o: %.c
 	@$(CC) -o $@ -c $< $(CFLAGS)
