@@ -4,6 +4,7 @@
 #include "affichage.h"
 #include "quicksort.h"
 
+
 // initialise le tableau avec des valeurs aléatoires
 void remplirTab(int *tab, int tailleTab)
 {
@@ -17,22 +18,20 @@ void remplirTab(int *tab, int tailleTab)
 
 int main(int argc, char const *argv[]) {
 
-    int tailleTab = 180000;
+    int tailleTab = 10;
     int tab[tailleTab];
     remplirTab(tab, tailleTab);
 
-    /*
     int (*fctComp)(int, int);
     fctComp = menu();
-    */
 
-    if (tailleTab < 200000) printTab(tab, tailleTab);
-    printTrie(tab, tailleTab);
+    if (tailleTab < 20000) printTab(tab, tailleTab);
+    printTrie(tab, tailleTab, fctComp);
 
-    quickSort(tab, 0, tailleTab-1);
+    quickSort(tab, 0, tailleTab-1, fctComp);
 
-    if (tailleTab < 200000) printTab(tab, tailleTab);
-    printTrie(tab, tailleTab);
+    if (tailleTab < 20000) printTab(tab, tailleTab);
+    printTrie(tab, tailleTab, fctComp);
 
     return 0;
 }

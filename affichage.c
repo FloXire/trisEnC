@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "affichage.h"
-// #include "comparaison.h"
+#include "comparaison.h"
 
 // affiche le tableau
 void printTab(int *tab, int tailleTab)
@@ -12,28 +12,24 @@ void printTab(int *tab, int tailleTab)
 }
 
 // retourne 1 si le tableau est trié, 0 sinon
-int verifTabTrie(int *tab, int tailleTab)
+int verifTabTrie(int *tab, int tailleTab, int (*fctComp)(int, int))
 {
     for (int i=0; i<(tailleTab-1); i++)
     {
-        if (tab[i+1] < tab[i])
-        {
-            return 0;
-        }
+        if (fctComp(tab[i+1], tab[i])) return 0;
     }
     return 1;
 }
 
-void printTrie(int *tab, int tailleTab)
+void printTrie(int *tab, int tailleTab, int (*fctComp)(int, int))
 {
-    if (verifTabTrie(tab, tailleTab) != 1)
+    if (verifTabTrie(tab, tailleTab, fctComp) != 1)
     {
         printf("Tableau non trié\n\n");
     }
     else printf("Tableau trié\n\n");
 }
 
-/*
 int (*menu(void))(int, int)
 {
     int (*listeFonction[2])(int, int) = {triCroissant, triDecroissant};
@@ -47,4 +43,3 @@ int (*menu(void))(int, int)
 
     return listeFonction[typeFct-1];
 }
-*/
