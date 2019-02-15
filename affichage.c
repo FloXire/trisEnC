@@ -32,12 +32,17 @@ void printTrie(int *tab, int tailleTab, int (*fctComp)(int, int))
 
 int (*menu(void))(int, int)
 {
-    int (*listeFonction[2])(int, int) = {triCroissant, triDecroissant};
+    int (*listeFonction[6])(int, int) = {triCroissant, triDecroissant, triPairCroissant, triPairDecroissant, triImpairCroissant, triImpairDecroissant};
     int typeFct;
 
-    printf("Quelle fonction de comparaison voulez vous utiliser ?\n");
+    printf("Quelle fonction de comparaison voulez vous utiliser ?\n\n");
     printf("Entrez 1 pour un tri croissant\n");
     printf("Entrez 2 pour un tri décroissant\n");
+    printf("Entrez 3 pour un tri croissant avec les nombres pairs en premier puis les nombres impairs\n");
+    printf("Entrez 4 pour un tri décroissant avec les nombres pairs en premier puis les nombres impairs\n");
+    printf("Entrez 5 pour un tri croissant avec les nombres impairs en premier puis les nombres pairs\n");
+    printf("Entrez 6 pour un tri décroissant avec les nombres impairs en premier puis les nombres pairs\n\n");
+
     printf("Votre choix : ");
     scanf("%d", &typeFct);
 
