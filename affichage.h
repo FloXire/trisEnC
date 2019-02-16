@@ -14,7 +14,9 @@ typedef struct
     int nbFctChoisies;
     PtrFonctComp fonctionCompChoisie;
     PtrFonctTri *fonctionsTriChoisies;
-} *PtrFoncTriComp_s;
+} FoncTriComp_s;
+
+typedef FoncTriComp_s *PtrFoncTriComp_s;
 
 void printTab(int *tab, int tailleTab);
 int verifTabTrie(int *tab, int tailleTab, PtrFonctComp);

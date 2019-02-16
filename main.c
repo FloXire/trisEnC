@@ -16,8 +16,8 @@ void remplirTab(int *tab, int tailleTab)
     }
 }
 
-int main(void) {
-
+int main(void)
+{
     int tailleTab = 1000000;
     int tab[tailleTab];
     remplirTab(tab, tailleTab);

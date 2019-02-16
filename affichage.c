@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "affichage.h"
 #include "comparaison.h"
 #include "tris.h"
@@ -43,7 +44,7 @@ PtrFoncTriComp_s menu(void)
 
     int cpt = 0;
     int choixCourant;
-    char choixAutreAlgo = 'o';
+    char choixAutreAlgo;
 
     printf("Quelle fonction de tri voulez vous utiliser ? Vous pourrez en choisir plusieurs...\n\n");
 
@@ -56,7 +57,7 @@ PtrFoncTriComp_s menu(void)
         scanf("%d", &choixCourant);
         choixAlgosTri[cpt] = choixCourant;
 
-        printf("\n\nVoulez vous choisir un autre algorithme (o ou n)? ");
+        printf("\n\nVoulez vous choisir un autre algorithme (o ou n) ? ");
         scanf("%c", &choixAutreAlgo);
         printf("\n");
 
@@ -68,8 +69,11 @@ PtrFoncTriComp_s menu(void)
         choixFonctionsTri[i] = fonctionsTri[choixAlgosTri[i]-1];
     }
 
-    choixFctUser->fonctionsTriChoisies = choixFonctionsTri;
-    choixFctUser->nbFctChoisies = cpt;
+    if ((choixFctUser = malloc(6*sizeof(int))) != NULL)
+    {
+        choixFctUser->nbFctChoisies = cpt;
+        choixFctUser->fonctionsTriChoisies = choixFonctionsTri;
+    } else printf("Erreur initialisation structure\n");
 
 
     PtrFonctComp fonctionsComp[nbFctComp] = {triCroissant, triDecroissant, triPairCroissant, triPairDecroissant, triImpairCroissant, triImpairDecroissant};
