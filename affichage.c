@@ -46,20 +46,22 @@ PtrFoncTriComp_s menu(void)
     int choixCourant;
     char choixAutreAlgo;
 
-    printf("Quelle fonction de tri voulez vous utiliser ? Vous pourrez en choisir plusieurs...\n\n");
+    printf("Quelle fonction de tri voulez vous utiliser ? Vous pourrez en choisir plusieurs...\n");
 
     do
     {
-        printf("Entrez 1 pour un quicksort\n");
+        printf("\nEntrez 1 pour un quicksort\n");
         printf("Entrez 2 pour un tri à bulles\n\n");
 
         printf("Votre choix : ");
         scanf("%d", &choixCourant);
         choixAlgosTri[cpt] = choixCourant;
 
-        printf("\n\nVoulez vous choisir un autre algorithme (o ou n) ? ");
-        scanf("%c", &choixAutreAlgo);
-        printf("\n");
+        if (cpt < nbFctTri-1)
+        {
+            printf("\n\nVoulez vous choisir un autre algorithme (o ou n) ? ");
+            scanf(" %c", &choixAutreAlgo);
+        }
 
         cpt++;
     } while ((choixAutreAlgo == 'o') && (cpt < nbFctTri));
