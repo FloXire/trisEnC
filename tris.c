@@ -56,3 +56,25 @@ int quickSort(int *tab, int ind1, int ind2, int (*fctComp)(int, int))
 
     return 0;
 }
+
+int triBulles(int *tab, int ind1, int ind2, int (*fctComp)(int, int))
+{
+    int trie;
+    for (int i=ind1; i<ind2; i++)
+    {
+        trie = 1; // par défaut on suppose que le tableau est trié
+
+        for (int j=0; j<ind2; j++)
+        {
+            if (fctComp(tab[j+1], tab[j]))
+            {
+                switche(tab, j, j+1);
+                trie = 0;
+            }
+        }
+
+        if (trie) return 0;
+    }
+
+    return 0;
+}

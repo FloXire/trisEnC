@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "affichage.h"
 #include "comparaison.h"
+#include "tris.h"
 
 // affiche le tableau
 void printTab(int *tab, int tailleTab)
@@ -12,7 +13,7 @@ void printTab(int *tab, int tailleTab)
 }
 
 // retourne 1 si le tableau est trié, 0 sinon
-int verifTabTrie(int *tab, int tailleTab, int (*fctComp)(int, int))
+int verifTabTrie(int *tab, int tailleTab, PtrFonctComp fctComp)
 {
     for (int i=0; i<(tailleTab-1); i++)
     {
@@ -21,18 +22,61 @@ int verifTabTrie(int *tab, int tailleTab, int (*fctComp)(int, int))
     return 1;
 }
 
-void printTrie(int *tab, int tailleTab, int (*fctComp)(int, int))
+void printTrie(int *tab, int tailleTab, PtrFonctComp fctComp)
 {
     if (verifTabTrie(tab, tailleTab, fctComp) != 1) printf("Tableau non trié\n\n");
     else printf("Tableau trié\n\n");
 }
 
-int (*menu(void))(int, int)
+/* MENU
+    Le menu renvoie une structure avec un tableau de pointeurs vers des fonctions de tris et un
+    pointeur vers une fonction de comparaison.
+*/
+PtrFoncTriComp_s menu(void)
 {
-    int (*listeFonction[6])(int, int) = {triCroissant, triDecroissant, triPairCroissant, triPairDecroissant, triImpairCroissant, triImpairDecroissant};
+    // pointeur vers un structure qui sera le retour de la fonction
+    PtrFoncTriComp_s choixFctUser;
+
+    PtrFonctTri fonctionsTri[nbFctTri] = {quickSort, triBulles};
+    int choixAlgosTri[nbFctTri] = {0, 0};
+    PtrFonctTri choixFonctionsTri[nbFctTri] = {NULL, NULL};
+
+    int cpt = 0;
+    int choixCourant;
+    char choixAutreAlgo = 'o';
+
+    printf("Quelle fonction de tri voulez vous utiliser ? Vous pourrez en choisir plusieurs...\n\n");
+
+    do
+    {
+        printf("Entrez 1 pour un quicksort\n");
+        printf("Entrez 2 pour un tri à bulles\n\n");
+
+        printf("Votre choix : ");
+        scanf("%d", &choixCourant);
+        choixAlgosTri[cpt] = choixCourant;
+
+        printf("\n\nVoulez vous choisir un autre algorithme (o ou n)? ");
+        scanf("%c", &choixAutreAlgo);
+        printf("\n");
+
+        cpt++;
+    } while ((choixAutreAlgo == 'o') && (cpt < nbFctTri));
+
+    for (int i=0; i<cpt; i++)
+    {
+        choixFonctionsTri[i] = fonctionsTri[choixAlgosTri[i]-1];
+    }
+
+    choixFctUser->fonctionsTriChoisies = choixFonctionsTri;
+    choixFctUser->nbFctChoisies = cpt;
+
+
+    PtrFonctComp fonctionsComp[nbFctComp] = {triCroissant, triDecroissant, triPairCroissant, triPairDecroissant, triImpairCroissant, triImpairDecroissant};
     int typeFct;
 
-    printf("Quelle fonction de comparaison voulez vous utiliser ?\n\n");
+    printf("\n\nQuelle fonction de comparaison voulez vous utiliser ?\n\n");
+
     printf("Entrez 1 pour un tri croissant\n");
     printf("Entrez 2 pour un tri décroissant\n");
     printf("Entrez 3 pour un tri croissant avec les nombres pairs en premier puis les nombres impairs\n");
@@ -43,5 +87,7 @@ int (*menu(void))(int, int)
     printf("Votre choix : ");
     scanf("%d", &typeFct);
 
-    return listeFonction[typeFct-1];
+    choixFctUser->fonctionCompChoisie = fonctionsComp[typeFct-1];
+
+    return choixFctUser;
 }
