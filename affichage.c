@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "affichage.h"
 #include "comparaison.h"
 #include "tris.h"
@@ -13,6 +14,12 @@ void printTab(int *tab, int tailleTab)
     }
 }
 
+void printTrie(int *tab, int tailleTab, PtrFonctComp fctComp)
+{
+    if (verifTabTrie(tab, tailleTab, fctComp) != 1) printf("Tableau non trié\n\n");
+    else printf("Tableau trié\n\n");
+}
+
 // retourne 1 si le tableau est trié, 0 sinon
 int verifTabTrie(int *tab, int tailleTab, PtrFonctComp fctComp)
 {
@@ -21,12 +28,6 @@ int verifTabTrie(int *tab, int tailleTab, PtrFonctComp fctComp)
         if (fctComp(tab[i+1], tab[i])) return 0;
     }
     return 1;
-}
-
-void printTrie(int *tab, int tailleTab, PtrFonctComp fctComp)
-{
-    if (verifTabTrie(tab, tailleTab, fctComp) != 1) printf("Tableau non trié\n\n");
-    else printf("Tableau trié\n\n");
 }
 
 /* MENU
@@ -71,10 +72,11 @@ PtrFoncTriComp_s menu(void)
         choixFonctionsTri[i] = fonctionsTri[choixAlgosTri[i]-1];
     }
 
-    if ((choixFctUser = malloc(6*sizeof(int))) != NULL)
+    if ((choixFctUser = malloc(sizeof(*choixFctUser))) != NULL)
     {
         choixFctUser->nbFctChoisies = cpt;
-        choixFctUser->fonctionsTriChoisies = choixFonctionsTri;
+        choixFctUser->fonctionsTriChoisies = malloc(sizeof(choixFonctionsTri));
+        memcpy(choixFctUser->fonctionsTriChoisies, choixFonctionsTri, sizeof(choixFonctionsTri));
     } else printf("Erreur initialisation structure\n");
 
 

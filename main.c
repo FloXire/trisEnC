@@ -18,13 +18,11 @@ void remplirTab(int *tab, int tailleTab)
 
 int main(void)
 {
-    int tailleTab = 1000000;
+    int tailleTab = 10;
     int tab[tailleTab];
     remplirTab(tab, tailleTab);
 
-    PtrFoncTriComp_s choixFctUser;
-
-    choixFctUser = menu();
+    PtrFoncTriComp_s choixFctUser = menu();
 
     if (tailleTab < 20000) printTab(tab, tailleTab);
     printTrie(tab, tailleTab, choixFctUser->fonctionCompChoisie);

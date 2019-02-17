@@ -19,8 +19,8 @@ typedef struct
 typedef FoncTriComp_s *PtrFoncTriComp_s;
 
 void printTab(int *tab, int tailleTab);
-int verifTabTrie(int *tab, int tailleTab, PtrFonctComp);
 void printTrie(int *tab, int tailleTab, PtrFonctComp);
+int verifTabTrie(int *tab, int tailleTab, PtrFonctComp);
 PtrFoncTriComp_s menu(void);
 
 #endif /* guard */
