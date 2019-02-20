@@ -39,7 +39,7 @@ PtrFoncTriComp_s menu(void)
     // pointeur vers un structure qui sera le retour de la fonction
     PtrFoncTriComp_s choixFctUser;
 
-    PtrFonctTri fonctionsTri[nbFctTri] = {quickSort, triBulles};
+    PtrFonctTri fonctionsTri[nbFctTri] = {quickSort, triBulles, triFusion, triParTas, TriParInsertion};
     int choixAlgosTri[nbFctTri] = {0, 0};
     PtrFonctTri choixFonctionsTri[nbFctTri] = {NULL, NULL};
 
@@ -52,7 +52,10 @@ PtrFoncTriComp_s menu(void)
     do
     {
         printf("\nEntrez 1 pour un quicksort\n");
-        printf("Entrez 2 pour un tri à bulles\n\n");
+        printf("Entrez 2 pour un tri à bulles\n");
+        printf("Entrez 3 pour un tri fusion\n");
+        printf("Entrez 4 pour un tri par tas\n");
+        printf("Entrez 5 pour un tri par insertion\n\n");
 
         printf("Votre choix : ");
         scanf("%d", &choixCourant);

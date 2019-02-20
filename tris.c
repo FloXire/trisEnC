@@ -1,5 +1,8 @@
+#include <stdlib.h>
+#include <stdio.h>
 #include "tris.h"
 #include "comparaison.h"
+#include "affichage.h"
 
 void switche(int *tab, int ind1, int ind2)
 {
@@ -74,6 +77,109 @@ int triBulles(int *tab, int ind1, int ind2, int (*fctComp)(int, int))
         }
 
         if (trie) return 0;
+    }
+
+    return 0;
+}
+
+int triFusion(int *tab, int ind1, int ind2, int (*fctComp)(int, int))
+{
+    if (ind1<ind2) {
+        int milieu = (ind1+ind2)/2;
+        triFusion(tab, ind1, milieu, fctComp);
+        triFusion(tab, milieu+1, ind2, fctComp);
+        fusion(tab, ind1, milieu, ind2, fctComp);
+    }
+
+    return 0;
+}
+
+int fusion(int *tab, int indDebTab1, int indFinTab1, int indFinTab2, int (*fctComp)(int, int)) {
+
+    int cpt1, cpt2, i;
+
+    int *tabTemp;
+    tabTemp=(int*) malloc((indFinTab2+indFinTab1)*sizeof(int));
+
+    for(cpt1=indDebTab1, cpt2=indFinTab1+1, i=indDebTab1; cpt1<=indFinTab1 && cpt2<=indFinTab2; i++) {
+        if(fctComp(tab[cpt1], tab[cpt2])){
+            tabTemp[i] = tab[cpt1++];
+        }
+        else {
+            tabTemp[i] = tab[cpt2++];
+        }
+    }
+
+    while(cpt1<=indFinTab1){
+        tabTemp[i++] = tab[cpt1++];
+    }
+
+    while(cpt2<=indFinTab2){
+        tabTemp[i++] = tab[cpt2++];
+    }
+
+    for(i=indDebTab1; i<=indFinTab2; i++){
+        tab[i] = tabTemp[i];
+    }
+
+    free(tabTemp);
+
+    return 0;
+}
+
+int triParTas(int *tab, int ind1, int ind2, int (*fctComp)(int, int))
+{
+    for(int i = ind2/2; i>=0; i--){
+        tamiser(tab, i, ind2, fctComp);
+    }
+
+    for(int i = ind2; i>=1; i--){
+        switche(tab, i, 0);
+        tamiser(tab, 0, i-1, fctComp);
+    }
+
+    return 0;
+}
+
+//descend tab[noeud] à sa place, sans dépasser l'indice n
+int tamiser(int *tab, int noeud, int n, int (*fctComp)(int, int)) {
+
+    int k = noeud;
+    int j = 2*k;
+
+    while(j <= n) {
+        if (j < n && fctComp(tab[j], tab[j+1])) {
+            j = j+1;
+        }
+        if (fctComp(tab[k], tab[j])) {
+            switche(tab, k, j);
+            k = j;
+            j = 2*k;
+        }
+        else {
+            j = n+1;
+        }
+    }
+
+    return 0;
+}
+
+int TriParInsertion(int *tab, int ind1, int ind2, int (*fctComp)(int, int))
+{
+    int temp;
+    int j;
+
+    for (int i=ind1; i<=ind2; i++)
+    {
+        temp = tab[i];
+        j = i;
+
+        while (j>0 && fctComp(temp, tab[j-1])) {
+            tab[j] = tab[j-1];
+            j = j-1;
+        }
+
+        tab[j] = temp;
     }
 
     return 0;

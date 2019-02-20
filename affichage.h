@@ -1,7 +1,7 @@
 #ifndef H_AFFICHAGE // si H_AFFICHAGE n'a pas encore été définit
 #define H_AFFICHAGE // on le definit
 
-#define nbFctTri 2
+#define nbFctTri 5
 #define nbFctComp 6
 
 // PtrFonctComp est le type des pointeurs sur fonction de comparaison
