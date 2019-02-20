@@ -60,6 +60,8 @@ int quickSort(int *tab, int ind1, int ind2, int (*fctComp)(int, int))
     return 0;
 }
 
+/* Compare les éléments voisins du tableau deux à deux.
+   Cette fonction boucle sur le tableau jusqu'à ce qu'il soit trié */
 int triBulles(int *tab, int ind1, int ind2, int (*fctComp)(int, int))
 {
     int trie;
@@ -94,8 +96,8 @@ int triFusion(int *tab, int ind1, int ind2, int (*fctComp)(int, int))
     return 0;
 }
 
-int fusion(int *tab, int indDebTab1, int indFinTab1, int indFinTab2, int (*fctComp)(int, int)) {
-
+int fusion(int *tab, int indDebTab1, int indFinTab1, int indFinTab2, int (*fctComp)(int, int))
+{
     int cpt1, cpt2, i;
 
     int *tabTemp;
@@ -142,8 +144,8 @@ int triParTas(int *tab, int ind1, int ind2, int (*fctComp)(int, int))
 }
 
 //descend tab[noeud] à sa place, sans dépasser l'indice n
-int tamiser(int *tab, int noeud, int n, int (*fctComp)(int, int)) {
-
+int tamiser(int *tab, int noeud, int n, int (*fctComp)(int, int))
+{
     int k = noeud;
     int j = 2*k;
 
@@ -164,7 +166,7 @@ int tamiser(int *tab, int noeud, int n, int (*fctComp)(int, int)) {
     return 0;
 }
 
-int TriParInsertion(int *tab, int ind1, int ind2, int (*fctComp)(int, int))
+int triParInsertion(int *tab, int ind1, int ind2, int (*fctComp)(int, int))
 {
     int temp;
     int j;
