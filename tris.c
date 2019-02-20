@@ -28,7 +28,8 @@ int quickSort(int *tab, int ind1, int ind2, int (*fctComp)(int, int))
 
     while (i<j)
     {
-        /* On incrémente i de 1 si l'élément à l'indice i est
+        /* Cas d'un tri croissant
+        On incrémente i de 1 si l'élément à l'indice i est
         plus petit que le pivot. De la même façon on décrémente j
         si l'élément à l'indice j est plus grand que le pivot */
         if (fctComp(tab[i], pivot) || fctComp(pivot, tab[j]))
@@ -36,9 +37,10 @@ int quickSort(int *tab, int ind1, int ind2, int (*fctComp)(int, int))
             if (fctComp(tab[i], pivot)) i++;
             if (fctComp(pivot, tab[j])) j--;
         }
-        /* Sinon, on switch les deux valeurs, on se retrouve
-         avec la plus petite des deux valeurs dans la première
-         partie du tableau et la plus grande dans la deuxième */
+        /* Cas d'un tri croissant
+        Sinon, on switch les deux valeurs, on se retrouve
+        avec la plus petite des deux valeurs dans la première
+        partie du tableau et la plus grande dans la deuxième */
         else
         {
             switche(tab, i, j);
