@@ -9,6 +9,9 @@ typedef int (*PtrFonctComp)(int, int);
 // PtrFonctTri est le type des pointeurs sur fonction de tri
 typedef int (*PtrFonctTri)(int*, int, int, PtrFonctComp);
 
+/* Structure contenant le nombre de fonctions de tri choisies, 
+la fonction de comparaison et le tableau contenant les pointeurs
+des fonctions de tri choisies */
 typedef struct
 {
     int nbFctChoisies;
