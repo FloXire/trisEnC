@@ -161,7 +161,7 @@ int triParTas(int *tab, int ind1, int ind2, int (*fctComp)(int, int))
     return 0;
 }
 
-//descend tab[noeud] à sa place, sans dépasser l'indice n
+// Descend tab[noeud] à sa place, sans dépasser l'indice n
 int tamiser(int *tab, int noeud, int n, int (*fctComp)(int, int))
 {
     int k = noeud;
